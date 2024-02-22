@@ -6,5 +6,16 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
+  # Rota para listar todas as tarefas
+  get "/tasks", to: "tasks#index"
+  # Rota para exibir os detalhes de uma tarefa específica
+  get '/tasks/new', to: 'tasks#new', as:'new_task'
+  get '/tasks/:id', to: 'tasks#show', as:'task'
+  # Rota para exibir o formulário de criação de uma nova tarefa
+ # Rota para lidar com a criação de uma nova tarefa
+  post '/tasks', to: 'tasks#create'
+  get '/task/:id/edit', to:'tasks#edit', as:'edit_task'
+  patch '/tasks/:id', to:'tasks#update'
+  delete '/tasks/:id', to: 'tasks#destroy'
   # root "posts#index"
 end
